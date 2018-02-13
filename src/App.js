@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import DoodEventForm from './components/DoodEventForm';
+import DoodEventList from './components/DoodEventList';
 
 class App extends Component {
   render() {
@@ -11,27 +13,11 @@ class App extends Component {
           <h1 className="App-title">Doodux - planifiez vos événements</h1>
         </header>
         <div>
-          <form>
-            <input type="text" placeholder="titre" /><br />
-            <input type="text" placeholder="lieu" /><br />
-            <input type="text" placeholder="note" /><br />
-            <button type="submit">créer</button>
-          </form>
+          <DoodEventForm />
+          <DoodEventList doodEvents={this.props.doodevents} />
         </div>
         <br/>
-        <div>
-          {this.props.doodevents.map(doodevent => (
-            <div key={doodevent.id}>
-              <div>
-                <div>{doodevent.title}</div>
-                <div>lieu : {doodevent.place}</div>
-              </div>
-              <hr/>
-            </div>
-          )
 
-          )}
-        </div>
       </div>
     );
   }
