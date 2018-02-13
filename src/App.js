@@ -5,6 +5,7 @@ import logo from './logo.svg';
 import './App.css';
 import DoodEventForm from './components/DoodEventForm';
 import DoodEventList from './components/DoodEventList';
+import {addDoodEventActionCreator, removeDoodEventActionCreator} from './actions/doodEvent';
 
 class App extends Component {
   render() {
@@ -16,7 +17,7 @@ class App extends Component {
           <h1 className="App-title">Doodux - planifiez vos événements</h1>
         </header>
         <div>
-          <DoodEventForm />
+          <DoodEventForm addDoodEvent={this.props.addDoodEvent} />
           <DoodEventList doodEvents={this.props.doodEvents} />
         </div>
         <br/>
@@ -31,5 +32,15 @@ const mapStateToProps = (state) => {
       doodEvents: state.doodEvents
   };
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+      addDoodEvent: (doodEvent) => {
+          dispatch(addDoodEventActionCreator(doodEvent));        
+      },
+       removeDoodEvent: (doodEventId) => {
+          dispatch(removeDoodEventActionCreator(doodEventId));
+      } 
+  };
+};
 
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

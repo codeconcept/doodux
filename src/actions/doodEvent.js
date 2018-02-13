@@ -1,0 +1,2 @@
+export const addDoodEventActionCreator = (doodEvent) => ({type:'DOOD_EVENT_CREATE', payload: doodEvent});
+export const removeDoodEventActionCreator = (doodEventId) => ({type:'DOOD_EVENT_DELETE', payload: doodEventId});
