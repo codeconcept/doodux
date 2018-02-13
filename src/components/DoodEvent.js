@@ -1,10 +1,10 @@
 import React from 'react';
 
-const DoodEvent = (props) => (
+const DoodEvent = ({title, place}) => (
     <div>
         <div>
-            <div>{props.title}</div>
-            <div>lieu : {props.place}</div>
+            <div>{title}</div>
+            <div>lieu : {place}</div>
         </div>
         <hr/>
     </div>
