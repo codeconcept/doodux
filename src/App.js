@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+
 import logo from './logo.svg';
 import './App.css';
 import DoodEventForm from './components/DoodEventForm';
@@ -6,6 +8,7 @@ import DoodEventList from './components/DoodEventList';
 
 class App extends Component {
   render() {
+    console.log('this.props ', this.props);
     return (
       <div className="App">
         <header className="App-header">
@@ -14,7 +17,7 @@ class App extends Component {
         </header>
         <div>
           <DoodEventForm />
-          <DoodEventList doodEvents={this.props.doodevents} />
+          <DoodEventList doodEvents={this.props.doodEvents} />
         </div>
         <br/>
 
@@ -23,4 +26,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+      doodEvents: state.doodEvents
+  };
+}
+
+export default connect(mapStateToProps, null)(App);
